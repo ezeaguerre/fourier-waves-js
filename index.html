@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Fourier</title>
+		<script type="text/javascript" src="onda.js"></script>
+		<script type="text/javascript" src="ondas.js"></script>
+		<script type="text/javascript" src="plotter.js"></script>
+		<script type="text/javascript" src="parser.js"></script>
+		<script type="text/javascript" src="csv.js"></script>
+		<script type="text/javascript" src="index.js"></script>
+		<link rel="stylesheet" href="estilos.css">
+	</head>
+	<body>
+		<h1>Componentes de Fourier</h1>
+		<a href="#" id="mostrar-descripcion">[-]</a>
+		<div id="descripcion">
+			<p>
+				En el siguiente cuadro de texto se deben ingresar los componentes de fourier con el siguiente formato:
+			</p>
+			<pre>
+				Número_de_componente Amplitud_de_componente Fase_en_radiantes
+			</pre>
+			<p>
+				Dado que interesa más la forma de onda que la frecuencia de la misma, el número de componente es un múltiplo
+				de la frecuencia fundamental (la cual es irrelevante, pero es 1 Hz).
+				<br> La amplitud no especifica dimensiones, pero la máxima esperada de la sumatoria de ondas es 1.
+				<br> La fase simplemente se suma al argumento de la función seno, por lo cual debe estar en radianes.
+				<br> Todos los valores pueden utilizar código Javascript, y en particular las variables "pi" y "e" están asociadas
+				a sus valores matemáticos.
+				<br> La fórmula de cada componente es: amplitud * seno( 2 * pi * nro_componente * x + fase )
+				<br> El gráfico se dibuja utilizando la cantidad de muestras indicadas, y sólo dibuja 1 ciclo de la onda.
+				<br> El componente "0" no está soportado y, dado que no afecta la forma de la onda, no se considera necesario.
+			</p>
+		</div>
+		<div id="controles">
+			<p>
+				<label for="muestras">Muestras:</label>
+				<input type="number" min="1000" max="1000000" id="muestras" value="1000">
+				<button id="dibujar">Dibujar</button>
+				<button id="descargar">Descargar CSV</button>
+			</p>
+			<p>
+				Ejemplos:
+				<button id="onda-cuadrada">Onda Cuadrada</button>
+			</p>
+			<p>
+				<textarea id="datos-entrada" rows="25" cols="20"></textarea>
+			</p>
+		</div>
+		<canvas id="canvas" width="800" height="600"></canvas>
+	</body>
+</html>
